@@ -34,29 +34,24 @@ public class CuentaBancaria {
         this.numeroCuenta = numeroCuenta;
     }
 
-    public void setSaldo() {
-        this.saldo = saldo;
+    protected void setSaldo(double nuevoSaldo) {
+        this.saldo = nuevoSaldo;
     }
 
     public void setTitular(String titular) {
         this.titular = titular;
     }
 
-    //funciones
-
     public String describir() {
-        return "cuenta" + numeroCuenta + "Titular" + titular + "saldo $ " + saldo;
+        return "Cuenta " + numeroCuenta + " · Titular: " + titular + " · Saldo: $" + saldo;
     }
 
     public double calcularComision() {
         return 0.0;
     }
 
-    public double realizarRetiro(double monto) {
-        if (monto <= saldo) {
-            this.saldo -= monto;
-        } else {
-            return monto;
-        }
+    public void realizarRetiro(double monto) {
+        setSaldo(getSaldo() - monto);
     }
+
 }

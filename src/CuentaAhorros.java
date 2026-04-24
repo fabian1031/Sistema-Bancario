@@ -25,21 +25,27 @@ public class CuentaAhorros extends CuentaBancaria{
     //funciones
     @Override
     public String describir() {
-       String base = super.describir();
-        return base + " Tasa Mensual: " + tasaInteresMensual + "%";
-
+        return super.describir() + " Tasa mensual: " + tasaInteresMensual + "%";
     }
 
     @Override
-    public double calcularComision(){
-        if (getSaldo()>= saldoMinimo){
-            return 0.0;
-        }else {
-            return 12000.0;
+    public double calcularComision() {
+        return getSaldo() >= saldoMinimo ? 0.0 : 12000.0;
+    }
+    @Override
+    public void realizarRetiro(double monto) {
+        setSaldo(getSaldo() - monto);
+    }
+
+    public void realizarRetiro(double monto, boolean esUrgente) {
+        double resultadoSaldo = (getSaldo() - monto);
+        if (esUrgente && resultadoSaldo < saldoMinimo) {
+            setSaldo(resultadoSaldo - calcularComision());
+            System.out.println("Retiro urgente: se cobró comisión de $" + 12000.0);
         }
     }
 
+    public double calcularInteresDelMes() {
+        return getSaldo() * tasaInteresMensual / 100;
     }
-
-
 }

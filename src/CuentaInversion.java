@@ -24,4 +24,25 @@ public class CuentaInversion extends  CuentaBancaria{
     public void setTasaAnual(double tasaAnual) {
         this.tasaAnual = tasaAnual;
     }
+
+    //funciones
+    @Override
+    public String describir() {
+        return super.describir() + "plazo meses" + plazoMeses + "tasa Anual " + tasaAnual +"%";
+    }
+
+    @Override
+    public double calcularComision() {
+        return penalizacionRetiroAnticipado;
+    }
+
+    @Override
+    public void realizarRetiro(double monto) {
+        setSaldo(getSaldo() - (monto + penalizacionRetiroAnticipado);
+    }
+    public double calcularComision(int mesesTranscurridos) {
+        return mesesTranscurridos >= plazoMeses ? 0.0 : penalizacionRetiroAnticipado;
+    }
+
+
 }
