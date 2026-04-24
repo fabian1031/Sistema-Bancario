@@ -4,7 +4,6 @@ public class CuentaBancaria {
     private double saldo;
 
     //constructor vacio
-
     public CuentaBancaria() {
     }
 
@@ -14,34 +13,24 @@ public class CuentaBancaria {
         this.saldo = saldo;
         this.titular = titular;
     }
+
     // Getter
-
-    public String getNumeroCuenta() {
-        return numeroCuenta;
-    }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public String getTitular() {
-        return titular;
-    }
+    public String getNumeroCuenta() {return numeroCuenta;}
+    public double getSaldo() {return saldo;}
+    public String getTitular() {return titular;}
 
     //setter
-
     public void setNumeroCuenta(String numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
-
     protected void setSaldo(double nuevoSaldo) {
         this.saldo = nuevoSaldo;
     }
-
     public void setTitular(String titular) {
         this.titular = titular;
     }
 
+    //funciones
     public String describir() {
         return "Cuenta " + numeroCuenta + " · Titular: " + titular + " · Saldo: $" + saldo;
     }

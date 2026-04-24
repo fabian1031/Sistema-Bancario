@@ -3,32 +3,28 @@ public class CuentaCorriente extends CuentaBancaria {
     private double limiteSOBREGIRO;
 
     //constructor
-
     public CuentaCorriente(String numeroCuenta, double saldo, String titular, double comisionPorTransaccion, double limiteSOBREGIRO) {
         super(numeroCuenta, saldo, titular);
         this.comisionPorTransaccion = comisionPorTransaccion;
         this.limiteSOBREGIRO = limiteSOBREGIRO;
     }
-    //getter
 
+    //getter
     public double getComisionPorTransaccion() {
-        return comisionPorTransaccion;
-    }
+        return comisionPorTransaccion;}
 
     public double getLimiteSOBREGIRO() {
-        return limiteSOBREGIRO;
-    }
+        return limiteSOBREGIRO;}
 
     //setter
-
     public void setComisionPorTransaccion(double comisionPorTransaccion) {
         this.comisionPorTransaccion = comisionPorTransaccion;
     }
-
     public void setLimiteSOBREGIRO(double limiteSOBREGIRO) {
         this.limiteSOBREGIRO = limiteSOBREGIRO;
     }
 
+    //CuentaBancaria --> funciones
     @Override
     public String describir() {
         return super.describir() + " | Comisión por transacción: " + comisionPorTransaccion;
@@ -38,7 +34,6 @@ public class CuentaCorriente extends CuentaBancaria {
     public double calcularComision() {
         return comisionPorTransaccion;
     }
-
     @Override
     public void realizarRetiro(double monto) {
         double totalDebito = monto + comisionPorTransaccion;
