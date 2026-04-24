@@ -38,7 +38,7 @@ public class CuentaInversion extends  CuentaBancaria{
 
     @Override
     public void realizarRetiro(double monto) {
-        setSaldo(getSaldo() - (monto + penalizacionRetiroAnticipado);
+        setSaldo(getSaldo() - (monto + penalizacionRetiroAnticipado));
     }
     public double calcularComision(int mesesTranscurridos) {
         return mesesTranscurridos >= plazoMeses ? 0.0 : penalizacionRetiroAnticipado;

@@ -40,9 +40,14 @@ public class CuentaCorriente extends CuentaBancaria {
     }
 
     @Override
-    public void realizarRetiro(double monto, boolean comisionPorTransaccion) {
-        double resultadoDescuento = (getSaldo() - monto);
-        return resultadoDescuento > limiteSOBREGIRO ? "el retiro no es posible" : monto - comisionPorTransaccion;
+    public void realizarRetiro(double monto) {
+        double totalDebito = monto + comisionPorTransaccion;
+        if ((getSaldo() - totalDebito) >= limiteSOBREGIRO) {
+            System.out.println("El retiro no es posible: Excede el límite de sobregiro.");
+        } else {
+            setSaldo(getSaldo() - totalDebito);
+            System.out.println("Retiro exitoso.");
+        }
     }
 }
 
